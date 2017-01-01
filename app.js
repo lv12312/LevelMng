@@ -63,8 +63,8 @@ app.use('*', function (req, res, next) {
   if (app.get('env') == 'development') {
     console.log('>>>>>:', req.baseUrl);
   }
-  res.locals.title = 'Vue webpack';
-  res.locals.description = 'Vue webpack web';
+  res.locals.title = 'LevelDB Demo.';
+  res.locals.description = 'LevelDB Demo.';
   next();
 });
 
