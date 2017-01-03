@@ -71,6 +71,11 @@
             </n3-form>
           </div>
         </n3-modal>
+        <n3-pop-confirm
+          content="Delete All？"
+          :on-confirm="delAll">
+          <n3-button type="danger" size="xs">Delete All</n3-button>
+        </n3-pop-confirm>
       </n3-column>
     </n3-row>
     <n3-row>
@@ -123,11 +128,30 @@
             this.$http.post('/database/addDatabase', this.model).then((response) => {
               if (response.ok) {
                 this.showModal = false
+                this.refreshData()
               }
             }, (response) => {
 
             })
           }
+        })
+      },
+      delAll () {
+        this.$http.post('/database/deleteDatabaseMeta', this.model).then((response) => {
+          if (response.ok) {
+            this.refreshData()
+          }
+        }, (response) => {
+
+        })
+      },
+      refreshData () {
+        this.$http.get('/database/getMetaDatabase').then((response) => {
+          if (response.ok) {
+            this.source = response.body
+          }
+        }, (response) => {
+
         })
       }
     },

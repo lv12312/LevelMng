@@ -49,24 +49,42 @@ module.exports = {
             return
           })
         }
-      }
-
-      value.push({
-        name,
-        type,
-        description
-      })
-
-      db.put(tablesKey, value, function (err) {
-        if (err) {
-          next(err)
-          return
+      }else {
+        if(!value || value === null) {
+          value = []
         }
-        db.close()
-        res.json({
-          success: true,
-          msg: 'Create success.'
+        value.push({
+          name,
+          type,
+          description
         })
+
+        db.put(tablesKey, value, function (err) {
+          if (err) {
+            next(err)
+            return
+          }
+          db.close()
+          res.json({
+            success: true,
+            msg: 'Create success.'
+          })
+        })
+      }
+    })
+  },
+  deleteDatabaseMeta: function (req, res, next){
+    var db = levelup(databaseDir + metaDBName, {valueEncoding: 'json'})
+    db.del(tablesKey, function (err) {
+      if (err) {
+        db.close()
+        next(err)
+        return
+      }
+      db.close()
+      res.json({
+        success: true,
+        msg: 'Delete success.'
       })
     })
   }

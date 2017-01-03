@@ -24,4 +24,8 @@ router.post('/database/addDatabase', function(req, res, next){
   databaseService.addDatabase(req, res, next)
 });
 
+router.post('/database/deleteDatabaseMeta', function(req, res, next){
+  databaseService.deleteDatabaseMeta(req, res, next)
+});
+
 module.exports = router;
