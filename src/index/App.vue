@@ -7,15 +7,12 @@
         </n3-nav-item>
         <n3-nav-item>
           <n3-sub-nav>
-            <a slot="title">console</a>
+            <a slot="title">Console</a>
             <n3-nav-item>
-              <a>Add database</a>
+              <a href="/database">Database</a>
             </n3-nav-item>
             <n3-nav-item>
-              <a>Query data</a>
-            </n3-nav-item>
-            <n3-nav-item>
-              <a>Help</a>
+              <a>API</a>
             </n3-nav-item>
           </n3-sub-nav>
         </n3-nav-item>
@@ -25,7 +22,10 @@
   <n3-container id="level-container">
     <div id="app">
       <img src="./assets/logo.svg">
+      <h1>LevelUP(LevelDB) + Express + Vue + N3-component</h1>
+      <h4>(On Github)</h4>
     </div>
+
   </n3-container>
 </template>
 <style>
