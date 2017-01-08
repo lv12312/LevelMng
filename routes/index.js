@@ -28,4 +28,12 @@ router.post('/database/deleteDatabaseMeta', function(req, res, next){
   databaseService.deleteDatabaseMeta(req, res, next)
 });
 
+router.post('/database/deleteDatabase', function(req, res, next){
+  databaseService.deleteDatabase(req, res, next)
+});
+
+router.get('/data/putData', function(req, res, next){
+  databaseService.addData(req, res, next)
+});
+
 module.exports = router;

@@ -110,7 +110,12 @@
           title: '',
           dataIndex: '',
           sort: false,
-          width: '30%'
+          width: '30%',
+          render: (text, record, index) => {
+            return `<span class="item">
+                    <a href="javascript:;" @click="del('${record.name}','${index}')">Delete</a>
+                    </span>`
+          }
         }],
         source: [],
         model: {
@@ -153,6 +158,17 @@
         }, (response) => {
 
         })
+      },
+      del (databaseName, index) {
+        if (window.confirm('Delete ?')) {
+          this.$http.post('/database/deleteDatabase', {name: databaseName}).then((response) => {
+            if (response.ok) {
+              this.refreshData()
+            }
+          }, (response) => {
+
+          })
+        }
       }
     },
     created () {
